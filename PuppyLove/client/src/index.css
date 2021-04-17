@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #f5f7fa;
+    font-family: "Roboto";
+    margin: 0;
+  }
+  
+  .navbar {
+    background: linear-gradient(262deg, #ff7854, #fd267d);
+  }
+  
+  .navbar-default .navbar-brand {
+    font-size: 23px;
+  }
+  
+  .navbar-default .navbar-brand,
+  .navbar-default .navbar-nav > li > a {
+    color: white;
+  }
+  
+  .container-lg {
+    position: relative;
+  }
+  
+  .side .header {
+    background: linear-gradient(262deg, #ff7854, #fd267d);
+    width: 100%;
+    box-shadow: 0 1px 8px 0 rgba(0, 20, 20, 0.2);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .side .header .title {
+    padding: 10px;
+    color: #fff;
+    font-size: 23px;
+  }
+  
+  .side .matchesContainer {
+    background-color: #fff;
+    border-right: 1px solid #e1e1e1;
+    height: 200px;
+    overflow-y: scroll;
+  }
+  
+  @media only screen and (min-width: 768px) {
+    .side .matchesContainer {
+      min-height: 70vh;
+      height: 450px;
+    }
+  }
+  
+  .side .menu {
+    background-color: #fff;
+  }
+  
+  .side .menu ul {
+    border-bottom: 1px solid #e1e1e1;
+    display: flex;
+    padding: 10px 20px;
+    margin: 0;
+  }
+  
+  .side .menu ul li {
+    list-style: none;
+    margin: 0 10px;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+  }
+  
+  .side .menu .active {
+    border-bottom: 3px solid #ad8068;
+    padding-bottom: 2px;
+  }
+  
+  .side .messages {
+    display: inline-block;
+    padding: 10px;
+    transition: 0.2 box-shadow;
+  }
+  
+  .side .messages .avatar img {
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+  }
+  
+  .side .messages:hover {
+    /* Keeping for future development */
+    /* box-shadow: 0 0 15px 0 rgba(43,78,78,01);
+    border-right: 5px solid #fd5068; */
+  }
+  
+  .content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .content .card {
+    border-radius: 10px;
+    box-shadow: 0 1px 10px 0 rgba(0, 20, 20, 0.5);
+  }
+  
+  img#swipe {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: block;
+  }
+  
+  .picSize {
+    height: auto;
+    max-height: 350px;
+  }
+  
