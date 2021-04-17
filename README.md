@@ -40,7 +40,7 @@ As a group of paw loving people, we thought "what better way to join two of peop
 
 # Demo
 
-![Demo](assets/MemberPage.png)
+![Demo](PuppyLove\assets\MemberPage.png)
 
 # MIT License
 
