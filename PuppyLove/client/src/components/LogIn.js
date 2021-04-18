@@ -1,7 +1,12 @@
 import React from "react";
 
 const Login = () => {
-  return <div>hello</div>;
+  return (
+    <div>
+      hello this page is still under construction, to see our API feed, add
+      /Swipe to the URL - should look like this: http://localhost:3000/Swipe
+    </div>
+  );
 };
 
 export default Login;
