@@ -12,3 +12,4 @@ export default {
     return axios.get("https://dog.ceo/api/breeds/image/random");
   },
 };
+//route matches to utils API and routes matches controller which connects to models - project team steps.
