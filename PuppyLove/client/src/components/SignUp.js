@@ -32,7 +32,7 @@ const SignUp = () => {
                 />
               </div>
               <div
-                style="display: none"
+                style={{ display: "none" }}
                 id="alert"
                 className="alert alert-danger"
                 role="alert"
