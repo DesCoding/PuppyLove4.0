@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const postSchema = new Schema({
+const puppySchema = new Schema({
   title: { type: String, required: true },
   author: { type: String, required: true },
   body: String,
   date: { type: Date, default: Date.now },
 });
 
-const Post = mongoose.model("Post", postSchema);
+const Puppy = mongoose.model("Puppy", puppySchema);
 
-module.exports = Post;
+module.exports = Puppy;
 //reconfigure to create database - start in models folder

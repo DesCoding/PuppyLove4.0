@@ -7,8 +7,10 @@ import Matches from "./components/Matches";
 import Swipe from "./components/Swipe";
 import LandingPage from "./components/LandingPage";
 import SignUp from "./components/SignUp";
+import hammer from "hammerjs";
 
 function App() {
+  console.log(hammer);
   return (
     <Router>
       <div>
