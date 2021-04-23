@@ -30,6 +30,13 @@ const Swipe = () => {
   useEffect(() => {
     getNewDog();
   }, []);
+
+    const postDogs = () => {
+    API.postDogs()
+    .then ((res.data.message) =>   post("/api/createswipe", {answer, imageURL: url}, function(){
+    console.log("success")
+    }
+
   return (
     <div className="col-md-8 mb-3 content">
       <div className="card">

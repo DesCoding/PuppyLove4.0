@@ -9,7 +9,8 @@ router
   .route("/:id")
   .get(puppyController.findById)
   .put(puppyController.update)
-  .delete(puppyController.remove);
+  .delete(puppyController.remove)
+  .post(puppyController.create);
 
 module.exports = router;
 

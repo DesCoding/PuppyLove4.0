@@ -3,7 +3,6 @@ const db = require("../models");
 // Defining methods for the postsController
 module.exports = {
   findAll: function (req, res) {
-    //update db name for our saved puppies for each user
     db.Puppy.find(req.query)
       .sort({ date: -1 })
       .then((dbModel) => res.json(dbModel))

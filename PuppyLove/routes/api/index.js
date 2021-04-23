@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const postRoutes = require("./puppy");
+const puppyRoutes = require("./puppy");
 
 // Post routes
 router.use("/puppy", puppyRoutes);
