@@ -8,12 +8,13 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
-  findById: function (req, res) {
-    db.Puppy.findById(req.params.id)
+  find: function (req, res) {
+    db.Puppy.find({ userName: req.params.userName })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
   create: function (req, res) {
+    console.log("hi");
     db.Puppy.create(req.body)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));

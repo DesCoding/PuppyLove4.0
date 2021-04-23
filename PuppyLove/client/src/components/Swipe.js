@@ -17,6 +17,7 @@ const Swipe = () => {
       hammertime.on("swiperight", function (ev) {
         console.log("swiped right!");
         getNewDog();
+        postDogs();
       });
     }
   }, [swipecontainer]);
@@ -31,11 +32,16 @@ const Swipe = () => {
     getNewDog();
   }, []);
 
-    const postDogs = () => {
-    API.postDogs()
-    .then ((res.data.message) =>   post("/api/createswipe", {answer, imageURL: url}, function(){
-    console.log("success")
-    }
+  const postDogs = () => {
+    const newPuppy = {
+      imageURL: dogs,
+      userName: "Desiree",
+      //replace "Desiree" pass variable of userName once it's working in user input
+    };
+    API.postDogs(newPuppy)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="col-md-8 mb-3 content">

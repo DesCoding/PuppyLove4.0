@@ -12,7 +12,7 @@ export default {
     return axios.get("https://dog.ceo/api/breeds/image/random");
   },
   postDogs: function (data) {
-    return axios.post("http://localhost:8080/api/");
+    return axios.post("/api/puppy", data);
   },
 };
 //route matches to utils API and routes matches controller which connects to models - project team steps.
