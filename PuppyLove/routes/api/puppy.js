@@ -9,9 +9,9 @@ router
   .route("/:id")
   .get(puppyController.findById)
   .put(puppyController.update)
-  .delete(puppyController.remove)
-  .post(puppyController.create);
+  .delete(puppyController.remove);
 
+router.route("/createSwipe").post(puppyController.create);
 module.exports = router;
 
 //model, controler, routs to get saved matches in db for member pages
