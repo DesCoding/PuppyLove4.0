@@ -3,7 +3,7 @@ import API from "../utils/API";
 import { useState, useEffect } from "react";
 import Hammer from "hammerjs";
 
-const Swipe = () => {
+const Swipe = ({ username }) => {
   let swipecontainer = document.querySelector("#swipe");
   useEffect(() => {
     if (swipecontainer) {
@@ -16,13 +16,13 @@ const Swipe = () => {
       });
       hammertime.on("swiperight", function (ev) {
         console.log("swiped right!");
-        getNewDog();
         postDogs();
+        getNewDog();
       });
     }
   }, [swipecontainer]);
 
-  const [dogs, setDogImage] = useState();
+  const [dogImage, setDogImage] = useState();
   const getNewDog = () => {
     API.getDogs()
       .then((res) => setDogImage(res.data.message))
@@ -30,14 +30,18 @@ const Swipe = () => {
   };
   useEffect(() => {
     getNewDog();
-  }, []);
+  }, [swipecontainer]);
 
   const postDogs = () => {
+    console.log("Hey yo, why no image url?", dogImage);
     const newPuppy = {
-      imageURL: dogs,
-      userName: "Desiree",
+      imageURL: dogImage,
+      userName: username,
       //replace "Desiree" pass variable of userName once it's working in user input
     };
+    setTimeout(() => {
+      console.log(dogImage);
+    }, 2000);
     API.postDogs(newPuppy)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
@@ -49,7 +53,7 @@ const Swipe = () => {
         <img
           id="swipe"
           className="picSize img-fluid"
-          src={dogs}
+          src={dogImage}
           alt="Random Dog"
         />
         <div className="card-body">

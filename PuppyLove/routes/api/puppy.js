@@ -1,8 +1,12 @@
 const router = require("express").Router();
 const puppyController = require("../../controllers/puppyController");
+const verifyToken = require("../../config/verifyToken");
 console.log(puppyController);
 // Matches with "/api/posts"
-router.route("/").get(puppyController.findAll).post(puppyController.create);
+router
+  .route("/")
+  .get(puppyController.findAll)
+  .post(verifyToken, puppyController.create);
 
 // Matches with "/userName"
 router

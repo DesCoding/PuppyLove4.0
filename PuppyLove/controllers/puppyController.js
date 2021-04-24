@@ -14,7 +14,8 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   create: function (req, res) {
-    console.log("hi");
+    console.log(req.body);
+    req.body.answer = true;
     db.Puppy.create(req.body)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));

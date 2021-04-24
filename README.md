@@ -75,3 +75,18 @@ Example repo for react folder structure: https://github.com/fullstackreact/food-
 new technology - Swipe animation - https://www.framer.com/motion/
 
 API - https://www.petfinder.com/developers/v2/docs/
+
+Get App to work in react:
+login screen - logging into swipe page and pulling matches in
+
+sign in screen - for new users to create account
+
+swipe - working! :-) - need to pull in member saved puppies
+
+deploy to heroku
+
+send username to database
+
+CSS/format fixes and logo added
+
+

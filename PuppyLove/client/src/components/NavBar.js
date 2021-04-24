@@ -1,6 +1,41 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import { useStoreContext } from "../utils/GlobalState";
+import API from "../utils/API";
+import { Link } from "react-router-dom";
+import { SET_USERNAME } from "../utils/actions";
 const NavBar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [state, dispatch] = useStoreContext();
+
+  useEffect(() => {
+    if (!localStorage.getItem("token") || !state.username) {
+      setIsLoggedIn(false);
+    } else {
+      setIsLoggedIn(true);
+    }
+  }, [state]);
+
+  useEffect(() => {
+    API.authenticate({})
+      .then((response) => {
+        console.log(response.data);
+        dispatch({
+          type: SET_USERNAME,
+          payload: response.data,
+        });
+      })
+      .catch((err) => {
+        console.log("wtf", err);
+      });
+  }, []);
+
+  const logout = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    window.location.href = "/login";
+  };
+
   return (
     <div>
       <nav className="navbar navbar-default">
@@ -10,16 +45,26 @@ const NavBar = () => {
               Puppy Love
             </a>
           </div>
-          <a href="/SignUp">SignUp</a>
-          <a href="/LogIn">LogIn</a>
-          <ul className="nav navbar-nav navbar-right">
-            <li>
-              <a href="/Matches">Matches</a>
-            </li>
-            <li>
-              <a href="/logout">Logout</a>
-            </li>
-          </ul>
+
+          {isLoggedIn === true ? (
+            <div>
+              <ul className="nav navbar-nav navbar-right">
+                <li>
+                  <a href="/Members">Members</a>
+                </li>
+                <li>
+                  <a href="" onClick={logout}>
+                    LOG ME OUT
+                  </a>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <div>
+              <a href="/SignUp">SignUp</a>
+              <a href="/LogIn">LogIn</a>
+            </div>
+          )}
         </div>
       </nav>
     </div>

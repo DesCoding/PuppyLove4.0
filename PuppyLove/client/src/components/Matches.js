@@ -1,43 +1,26 @@
 import React from "react";
-import Match from "./MemberPage";
+//import Match from "./MemberPage";
 import API from "../utils/API";
 import { useState, useEffect } from "react";
+import { useStoreContext } from "../utils/GlobalState";
+const Matches = ({ matches }) => {
+  const [state, dispatch] = useStoreContext();
 
-const Matches = () => {
-  const [matches, setMatches] = useState([]);
-
-  useEffect(() => {
-    setMatches([
-      //replace with API call to internal database
-      {
-        image:
-          "http://i.pinimg.com/736x/7c/7b/ac/7c7bacd1ea378c796930797d9c164b5b.jpg",
-      },
-      {
-        image:
-          "http://i.pinimg.com/736x/7c/7b/ac/7c7bacd1ea378c796930797d9c164b5b.jpg",
-      },
-      {
-        image:
-          "http://i.pinimg.com/736x/7c/7b/ac/7c7bacd1ea378c796930797d9c164b5b.jpg",
-      },
-      {
-        image:
-          "http://i.pinimg.com/736x/7c/7b/ac/7c7bacd1ea378c796930797d9c164b5b.jpg",
-      },
-    ]);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className="col-md-4 mb-3 side">
       <div className="header">
-        <div className="title">User Name</div>
+        <div className="title">{state.username}</div>
       </div>
       <div className="menu">
         <ul>
-          {matches.map((match) => (
-            <Match name="Tera" image={match.image} />
-          ))}
+          {matches.length &&
+            matches.map((match, idx) => (
+              <li key={idx}>
+                <img src={match.imageURL} />
+              </li>
+            ))}
         </ul>
       </div>
       <div className="matchesContainer"></div>
