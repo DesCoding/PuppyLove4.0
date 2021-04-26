@@ -42,11 +42,8 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="container-lg mt-4 signupcontainer">
       {isLoggedIn && <Redirect to="/Members" />}
-      hello this page is still under construction, to see our API feed, add
-      /Swipe to the URL - should look like this: http://localhost:3000/Swipe div
-      class="container-lg mt-4 logincontainer"
       <div className="row">
         <div className="col-md-6 col-md-offset-3">
           <form className="login" onSubmit={handleSubmit}>
