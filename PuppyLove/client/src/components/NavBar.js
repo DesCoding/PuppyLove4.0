@@ -42,7 +42,7 @@ const NavBar = () => {
         <div className="container-fluid">
           <div className="navbar-header">
             <a className="navbar-brand" href="/">
-              Puppy Love
+              <img className="logo" src={require("../assets/logo.png")} />
             </a>
           </div>
 
@@ -50,11 +50,8 @@ const NavBar = () => {
             <div>
               <ul className="nav navbar-nav navbar-right">
                 <li>
-                  <a href="/Members">Members</a>
-                </li>
-                <li>
                   <a href="" onClick={logout}>
-                    LOG ME OUT
+                    Log Out
                   </a>
                 </li>
               </ul>

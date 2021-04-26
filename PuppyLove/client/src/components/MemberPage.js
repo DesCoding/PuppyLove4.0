@@ -20,11 +20,17 @@ const Match = (props) => {
     }
   }, [state]);
   return (
-    <div>
+    <div className="container">
       {!isLoggedIn && <Redirect to="/login" />}
-      Hello! Welcome, {state.username}
-      <Matches matches={matches} />
-      <Swipe username={state.username} />
+      {/* Hello! Welcome, {state.username} */}
+      <div className="row mt-5">
+        <div className="col-md-8 mb-3">
+          <Matches matches={matches} />
+        </div>
+        <div className="col-md-4 mb-3">
+          <Swipe username={state.username} />
+        </div>
+      </div>
     </div>
   );
 };

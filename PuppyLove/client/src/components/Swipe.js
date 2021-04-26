@@ -48,7 +48,7 @@ const Swipe = ({ username }) => {
   };
 
   return (
-    <div className="col-md-8 mb-3 content">
+    <div className="content">
       <div className="card">
         <img
           id="swipe"
