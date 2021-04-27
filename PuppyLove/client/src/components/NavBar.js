@@ -1,39 +1,51 @@
 import React, { useState, useEffect } from "react";
 import { useStoreContext } from "../utils/GlobalState";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
-import { SET_USERNAME } from "../utils/actions";
+import { Link, Redirect } from "react-router-dom";
+import { IS_LOGGED_IN, SET_USERNAME } from "../utils/actions";
 const NavBar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [state, dispatch] = useStoreContext();
 
-  useEffect(() => {
-    if (!localStorage.getItem("token") || !state.username) {
-      setIsLoggedIn(false);
-    } else {
-      setIsLoggedIn(true);
-    }
-  }, [state]);
+  // useEffect(() => {
+  //   if (!localStorage.getItem("token") || !state.username) {
+  //     dispatch({
+  //       type: IS_LOGGED_IN,
+  //       payload: false,
+  //     });
+  //   } else {
+  //     dispatch({
+  //       type: IS_LOGGED_IN,
+  //       payload: true,
+  //     });
+  //   }
+  // }, []);
 
   useEffect(() => {
     API.authenticate({})
       .then((response) => {
-        console.log(response.data);
+        console.log("authenticating", response.data);
         dispatch({
           type: SET_USERNAME,
           payload: response.data,
+        });
+        dispatch({
+          type: IS_LOGGED_IN,
+          payload: true,
         });
       })
       .catch((err) => {
         console.log("wtf", err);
       });
-  }, []);
+  }, [state.isLoggedin]);
 
   const logout = (e) => {
     e.preventDefault();
+    console.log("Dispassing false");
     localStorage.removeItem("token");
-    setIsLoggedIn(false);
-    window.location.href = "/login";
+    dispatch({
+      type: IS_LOGGED_IN,
+      payload: false,
+    });
   };
 
   return (
@@ -46,20 +58,20 @@ const NavBar = () => {
             </a>
           </div>
 
-          {isLoggedIn === true ? (
+          {state.isLoggedin === true ? (
             <div>
               <ul className="nav navbar-nav navbar-right">
                 <li>
-                  <a href="" onClick={logout}>
+                  <button className="btn btn-primary" onClick={logout}>
                     Log Out
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>
           ) : (
             <div>
-              <a href="/SignUp">SignUp</a>
-              <a href="/LogIn">LogIn</a>
+              <Link to="/SignUp">SignUp</Link>
+              <Link to="/LogIn">LogIn</Link>
             </div>
           )}
         </div>

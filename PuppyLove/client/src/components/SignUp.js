@@ -19,6 +19,8 @@ const SignUp = () => {
         console.log(err);
       });
   };
+
+  // add a redirect to login page
   return (
     <div>
       <div className="container-lg mt-4 signupcontainer">

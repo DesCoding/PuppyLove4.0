@@ -10,6 +10,6 @@ module.exports = function (req, res, next) {
       next();
     })
     .catch((err) => {
-      res.send("gtfo u don't have the right stuff");
+      res.status(401).send();
     });
 };

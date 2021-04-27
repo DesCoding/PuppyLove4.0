@@ -1,49 +1,61 @@
 import React from "react";
 import API from "../utils/API";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import Hammer from "hammerjs";
+import { Redirect } from "react-router-dom";
+import { useStoreContext } from "../utils/GlobalState";
+import { INCREMENT } from "../utils/actions";
 
-const Swipe = ({ username }) => {
-  let swipecontainer = document.querySelector("#swipe");
-  useEffect(() => {
-    if (swipecontainer) {
-      let hammertime = new Hammer(swipecontainer);
-      hammertime.on("swipeleft", function (ev) {
-        // what was the answer?
-        // send the answer and the url to db
-        getNewDog();
-        console.log("swipeleft");
-      });
-      hammertime.on("swiperight", function (ev) {
-        console.log("swiped right!");
-        postDogs();
-        getNewDog();
-      });
-    }
-  }, [swipecontainer]);
-
+const Swipe = () => {
+  const [state, dispatch] = useStoreContext();
   const [dogImage, setDogImage] = useState();
-  const getNewDog = () => {
+  const [ready, setReady] = useState(false);
+
+  useLayoutEffect(() => {
+    console.log("Loading hammertime");
+    let swipecontainer = document.querySelector("#swipe");
+    let hammertime = new Hammer(swipecontainer);
+    hammertime.on("swipeleft", function (ev) {
+      getNewDog();
+      console.log("swipeleft");
+    });
+    hammertime.on("swiperight", function (ev) {
+      console.log("swiped right!", dogImage);
+      dispatch({
+        type: INCREMENT,
+      });
+
+      postDogs();
+    });
+    setReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (ready) {
+      getNewDog();
+    }
+  }, [ready]);
+
+  const getNewDog = (isfirst) => {
     API.getDogs()
-      .then((res) => setDogImage(res.data.message))
+      .then((res) => {
+        setDogImage(res.data.message);
+      })
       .catch((err) => console.log(err));
   };
-  useEffect(() => {
-    getNewDog();
-  }, [swipecontainer]);
 
   const postDogs = () => {
-    console.log("Hey yo, why no image url?", dogImage);
+    let image = document.getElementById("swipe").getAttribute("src");
+    console.log("Hey yo, where dem dogs at", image);
     const newPuppy = {
-      imageURL: dogImage,
-      userName: username,
-      //replace "Desiree" pass variable of userName once it's working in user input
+      imageURL: image,
+      userName: state.username,
     };
-    setTimeout(() => {
-      console.log(dogImage);
-    }, 2000);
     API.postDogs(newPuppy)
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log("liked that puppy!");
+        getNewDog();
+      })
       .catch((err) => console.log(err));
   };
 

@@ -1,23 +1,22 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Redirect } from "react-router";
-import { SET_USERNAME } from "../utils/actions";
+import { Redirect } from "react-router-dom";
+import { IS_LOGGED_IN, SET_USERNAME } from "../utils/actions";
 import API from "../utils/API";
 import { useStoreContext } from "../utils/GlobalState";
 
 const Login = () => {
   const [state, dispatch] = useStoreContext();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const userNameRef = useRef("");
   const passwordRef = useRef("");
 
-  useEffect(() => {
-    console.log(state.username);
-    if (!localStorage.getItem("token") && !state.username) {
-      setIsLoggedIn(false);
-    } else {
-      setIsLoggedIn(true);
-    }
-  }, []);
+  // useEffect(() => {
+  //   console.log(state.username);
+  //   if (!localStorage.getItem("token") && !state.username) {
+  //     setIsLoggedIn(false);
+  //   } else {
+  //     setIsLoggedIn(true);
+  //   }
+  // }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,7 +33,7 @@ const Login = () => {
         console.log(response.data);
         localStorage.setItem("token", JSON.stringify(response.data.token));
         dispatch({ type: SET_USERNAME, payload: body.username });
-        setIsLoggedIn(true);
+        dispatch({ type: IS_LOGGED_IN, payload: true });
       })
       .catch((errr) => {
         console.log(errr);
@@ -43,7 +42,7 @@ const Login = () => {
 
   return (
     <div className="container-lg mt-4 signupcontainer">
-      {isLoggedIn && <Redirect to="/Members" />}
+      {state.isLoggedin && <Redirect to="/Members" />}
       <div className="row">
         <div className="col-md-6 col-md-offset-3">
           <form className="login" onSubmit={handleSubmit}>
