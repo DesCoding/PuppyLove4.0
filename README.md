@@ -66,27 +66,5 @@ SOFTWARE.
 
 # Contact Info
 
-Puppy Love 4.0 is a collaborative project, created by Tera Brown, Latuanja Carson, Jessica Ferguson, Desiree Stout, and Louis Werner. To contact us, e-mail terabrown12@icloud.com, latuanja.c@gmail.com, jferguson1903@gmail.com, d.stout31@yahoo.com, louiswerner64@gmail.com
-
-Transitioning to react app - views and public folder will move into client folder. client folder must be created with React app.
-
-Example repo for react folder structure: https://github.com/fullstackreact/food-lookup-demo
-
-new technology - Swipe animation - https://www.framer.com/motion/
-
-API - https://www.petfinder.com/developers/v2/docs/
-
-Get App to work in react:
-login screen - logging into swipe page and pulling matches in
-
-sign in screen - for new users to create account
-
-swipe - working! :-) - need to pull in member saved puppies
-
-deploy to heroku
-
-send username to database
-
-CSS/format fixes and logo added
-
+Puppy Love 4.0 is a collaborative project, created by Tera Brown, Latuanja Carson, Jessica Ferguson, and Desiree Stout. To contact us, e-mail terabrown12@icloud.com, latuanja.c@gmail.com, jferguson1903@gmail.com, and d.stout31@yahoo.com
 

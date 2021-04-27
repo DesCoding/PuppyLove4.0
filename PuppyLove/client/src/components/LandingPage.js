@@ -39,8 +39,15 @@ const LandingPage = () => {
           </div>
         )}
       </div>
-
-      <div className="row">links for shelters and pet care tips....</div>
+      <div className="col-md-6 col-md-offset-3">
+        <p>Click here to find adoptable pups in the St. Louis Area.</p>
+        <Link to="https://www.needypaws.org/"></Link>
+        <Link to="https://www.strayrescue.org/"></Link>
+        <Link to="https://www.hsmo.org/"></Link>
+        <Link to="https://odas.org/"></Link>
+        <p>Click here to find adoptable pups nationwide.</p>
+        <Link to="https://www.akc.org/akc-rescue-network/"></Link>
+      </div>
     </div>
   );
 };
