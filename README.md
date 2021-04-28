@@ -36,7 +36,7 @@ As a group of paw loving people, we thought "what better way to join two of peop
 
 [GitHub Repo](https://github.com/DesCoding/PuppyLove4.0)
 
-[Heroku Deployed Link](https://puppy-love.herokuapp.com/)
+[Heroku Deployed Link](https://git.heroku.com/puppylove4.git)
 
 # Demo
 
