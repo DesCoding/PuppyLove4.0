@@ -24,13 +24,11 @@ As a group of paw loving people, we thought "what better way to join two of peop
     * API
     * Bootstrap
     * JSON
-    * Sequelize
-    * SQL Workbench
+    * Mongoose
+    * MongoDB
     * ReactJs
-    * Passport
     * Handlebars
-    * Hammer.js (new technology)
-    * Framer (new technology)
+    * Hammer.js
 
 # Deployment
 
@@ -40,7 +38,7 @@ As a group of paw loving people, we thought "what better way to join two of peop
 
 # Demo
 
-![Demo](PuppyLove/assets/MemberPage.png)
+![Demo](assets/MemberPage.png)
 
 # MIT License
 
